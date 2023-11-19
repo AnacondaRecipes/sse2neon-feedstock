@@ -9,7 +9,7 @@ source:
   url: https://github.com/DLTcollab/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 06f4693219deccb91b457135d836fc514a1c0a57e9fa66b143982901d2d19677
   patches:
-    - 0001-use-no-optimization-to-pass-all-tests.patch
+    - 0001-use-no-optimization-to-pass-all-tests.patch # [not win]
   
 build:
   number: 0
@@ -17,14 +17,15 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-    - patch
+    - {{ compiler('c') }} # [not win]
+    - {{ compiler('cxx') }} # [not win]
+    - make  # [not win]
+    - patch  # [not win]
 
 test:
   commands:
-    - test -f "${PREFIX}/include/sse2neon.h"
+    - test -f "${PREFIX}/include/sse2neon.h" # [not win]
+    - if not exist %LIBRARY_INC%\sse2neon.h exit 1  # [win]
     
 about:
   home: https://github.com/DLTcollab/sse2neon/
