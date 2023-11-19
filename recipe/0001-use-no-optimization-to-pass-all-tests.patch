@@ -1,0 +1,26 @@
+From 3734943d13e0d73bfa3e2b85a7b36d9703295616 Mon Sep 17 00:00:00 2001
+From: Marek Waszkiewicz <mwaszkiewicz@anaconda.com>
+Date: Sun, 19 Nov 2023 23:12:41 +0100
+Subject: [PATCH] use no optimization to pass all tests
+
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index caffd79..d603230 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,7 +39,8 @@ else
+     $(error Unsupported architecture)
+ endif
+ 
+-CXXFLAGS += -Wall -Wcast-qual -I. $(ARCH_CFLAGS) -std=gnu++14
++#conda adds -O2 which breaks few tests, override this setting by -O0
++CXXFLAGS += -Wall -Wcast-qual -I. $(ARCH_CFLAGS) -std=gnu++14 -O0
+ LDFLAGS	+= -lm
+ OBJS = \
+     tests/binding.o \
+-- 
+2.25.1
+
