@@ -10,5 +10,7 @@ fi
 
 cp ${SRC_DIR}/sse2neon.h ${PREFIX}/include
 
+unset CFLAGS
+unset CXXFLAGS
 make check
 

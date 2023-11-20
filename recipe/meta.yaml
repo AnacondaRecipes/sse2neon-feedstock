@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/DLTcollab/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 06f4693219deccb91b457135d836fc514a1c0a57e9fa66b143982901d2d19677
-  patches: # [not win]
-    - 0001-use-no-optimization-to-pass-all-tests.patch # [not win]
   
 build:
   number: 0
@@ -20,7 +18,6 @@ requirements:
     - {{ compiler('c') }} # [not win]
     - {{ compiler('cxx') }} # [not win]
     - make  # [not win]
-    - patch  # [not win]
 
 test:
   commands:
