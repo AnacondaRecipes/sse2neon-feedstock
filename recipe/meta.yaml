@@ -21,8 +21,8 @@ requirements:
 
 test:
   commands:
-    - test -f "${PREFIX}/include/sse2neon.h" # [not win]
-    - if not exist %LIBRARY_INC%\sse2neon.h exit 1  # [win]
+    - test -f "${PREFIX}/include/sse2neon/sse2neon.h" # [not win]
+    - if not exist %LIBRARY_INC%\sse2neon\sse2neon.h exit 1  # [win]
     
 about:
   home: https://github.com/DLTcollab/sse2neon/
