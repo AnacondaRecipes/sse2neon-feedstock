@@ -1,14 +1,7 @@
 #!/bin/bash
 
-if [ -d ${PREFIX}/include ];
-then
-    echo "Directory ${PREFIX}/include exists"
-else
-    echo "Error: Directory does not exists"
-    mkdir ${PREFIX}/include
-fi
-
-cp ${SRC_DIR}/sse2neon.h ${PREFIX}/include
+mkdir -p ${PREFIX}/include/sse2neon
+cp -r sse2neon.h $PREFIX/include/sse2neon
 
 unset CFLAGS
 unset CXXFLAGS
